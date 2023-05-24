@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="titulo">titulo</h2>
+    <h5 class="subtitulo">sub titulo</h2>
+    <h5 class="nemMeViu">sub titulo</h2>
+  <script>
+    //criar
+    const table = document.createElement("table")
+
+    //recuperar existente
+    const titulo = document.getElementById("titulo")
+    const subtitulo = document.querySelector(".subtitulo")
+    const nemMeViu = document.querySelector(".nemMeViu")
+
+
+    //alterar elementos em memoria
+
+    table.border = "1"
+    titulo.title = "Este é o titulo da página :))"
+    subtitulo.style.float = "right"
+
+    //inserir elementos não existentes em outros elementos, como o body
+    document.body.append(table)
+
+
+    //deletar elementos
+    nemMeViu.remove();
+  </script>  
+</body>
+</html>

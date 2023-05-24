@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .day{
+            background-color: orange;
+        }
+        .nigth{
+            background-color: navy;
+        }
+    </style>
+</head>
+<body style="font-size:3em">
+    <h1 id="titulo" class="day">Titulo da página</h1>
+
+    <input id="input" >
+    <hr>
+    <button id="txt" disabled>text</button>
+    <button id="cor">color</button>
+    <button id="rng">range</button>
+    <button id="dt">date</button>
+    <button id="file">file</button>
+    <button id="checkbox">checkbox</button>
+
+    <script>
+        const input = document.getElementById("input")
+
+        const txt = document.getElementById("txt")
+        const cor = document.getElementById("cor")
+        const rng = document.getElementById("rng")
+        const dt = document.getElementById("dt")
+        const file = document.getElementById("file")
+        const checkbox = document.getElementById("checkbox")
+
+        checkbox.onclick = function(){
+            input.type = "checkbox"
+            reabilitaTodos()
+            checkbox.remove()
+        }
+        file.onclick = function(){
+            input.type = "file"
+            reabilitaTodos()
+            file.disabled = true
+        }
+        dt.onclick = function(){
+            input.type = "date"
+            reabilitaTodos()
+            dt.disabled = true
+        }
+        cor.onclick = function(){
+            input.type = "color"
+            reabilitaTodos()
+            cor.disabled = true
+        }
+        rng.onclick = function(){
+            input.type = "range"
+            reabilitaTodos()
+            rng.disabled = true
+        }
+        txt.onclick = function(){
+            input.type = "text"
+            reabilitaTodos()
+            txt.disabled = true
+        }
+
+        function reabilitaTodos()
+        {
+            checkbox.disabled = false
+            file.disabled = false
+            rng.disabled = false
+            cor.disabled = false
+            dt.disabled = false
+            txt.disabled = false
+        }
+    </script>
+</body>
+</html>
