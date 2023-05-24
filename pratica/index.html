@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <b>Conteúdo</b>
+    <input id="conteudo" type="text">
+    <br>
+    <br>
+    <b>Cor</b>
+    <input id="cor" type="color">
+    
+    <b>Largura do container</b>
+    <input id="largura" type="range" min="100" max="500">
+
+    <button id="quadrado">Quadrado</button>
+    
+    <button id="arredondado">Arredondado</button>
+    
+    <script>
+        const conteudo = document.querySelector("#conteudo")
+        const cor = document.querySelector("#cor")
+        const largura = document.querySelector("#largura")
+        
+        const btnQuadrado = document.querySelector("#quadrado")
+        const btnArredondado = document.querySelector("#arredondado")
+
+        btnQuadrado.onclick = function(){
+            const conteudoDigitado = conteudo.value;
+            const corSelecionada = cor.value;
+            const larguraSelecionada = largura.value;
+            constroiElementoQuadrado(conteudoDigitado, corSelecionada, larguraSelecionada)
+        }
+        btnArredondado.onclick = function(){
+            const conteudoDigitado = conteudo.value;
+            const corSelecionada = cor.value;
+            const larguraSelecionada = largura.value;
+            constroiElementoArredondado(conteudoDigitado, corSelecionada, larguraSelecionada)
+        }
+
+        function constroiElementoQuadrado(conteudoDigitado, corSelecionada, larguraSelecionada){
+            const div = document.createElement("div")
+            
+            div.style.backgroundColor = corSelecionada;
+            div.style.height = "100px"
+            div.style.width = larguraSelecionada + "px";
+            div.style.float = "left"
+
+            div.innerText = conteudoDigitado;
+
+            document.body.append(div)
+        }
+        function constroiElementoArredondado(conteudoDigitado, corSelecionada, larguraSelecionada){
+            const div = document.createElement("div")
+            
+            div.style.backgroundColor = corSelecionada;
+            div.style.height = "100px"
+            div.style.width = larguraSelecionada + "px";
+            div.style.borderRadius = "15px";
+            div.style.float = "left"
+
+            div.innerText = conteudoDigitado;
+
+            document.body.append(div)
+        }
+        
+        function geraCorAleatoria(){
+                
+            var corAleatoria = "" //aqui vc entra
+
+            cor.value = corAleatoria
+
+            //rgba
+            //hexadecimal
+            //palavras pre-definidas ex: black, white, etc..
+        }
+        // const table = document.createElement("table") //cria um elemento html
+        // const titulo = document.getElementById("titulo") //recupera elemento da tela para uma variavel
+        // subtitulo.style.float = "right" //alterar
+        // document.body.append(table) 
+        // nemMeViu.remove();
+        // btnQuadrado.onclick = function(){} adiciona um evento a um elemento
+        // conteudo.value = "mudei o valor" conteudo é um input e assim atribuimos um novo valor a ele
+        // const valor = conteudo.value conteudo é um input e assim recuperamos o seu valor
+
+
+    </script>
+</body>
+</html>
