@@ -72,10 +72,9 @@
         
         function geraCorAleatoria(){
                 
-            var corAleatoria = "" //aqui vc entra
-
+            var corAleatoria = `#${Math.floor(Math.random()*16777215).toString(16)}`
             cor.value = corAleatoria
-
+            console.log(cor.value)
             //rgba
             //hexadecimal
             //palavras pre-definidas ex: black, white, etc..
