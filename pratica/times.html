@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img id="sonic" width="70px" src="https://media1.giphy.com/media/fu3GohBvHTaco/200w.gif?cid=6c09b952fdylm9lj3n1l6uru461bh607g7syiifgn2wq8uy1&ep=v1_gifs_search&rid=200w.gif&ct=g">
+    
+    <script>
+
+        let distanciaDaDireita = 0;
+        let distanciaDoTopo = 0;
+        const sonic = document.getElementById("sonic");
+        
+        
+        const identificador = setInterval(function(){
+            distanciaDaDireita += 10;
+            sonic.style.marginLeft = distanciaDaDireita + "px"
+            
+        },100)
+
+        setTimeout(function(){
+            clearInterval(identificador)
+     
+            const identificador2 = setInterval(function(){
+                distanciaDoTopo += 10;
+                sonic.style.marginTop = distanciaDoTopo + "px"
+            },100)
+            
+            setTimeout(function(){
+                clearInterval(identificador2)
+            },3000)
+
+        },5000)
+
+
+    </script>
+</body>
+</html>
