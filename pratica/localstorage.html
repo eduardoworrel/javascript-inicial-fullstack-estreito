@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        Olá, 
+        <span id="nome"></span>
+    </h1>
+    <script>
+        const nome = document.getElementById("nome");
+
+        let nomeUsuario = localStorage.getItem("nomeUsuario")
+
+        if(nomeUsuario == null){
+            nomeUsuario = prompt("Qual seu nome?")
+            localStorage.setItem("nomeUsuario", nomeUsuario)
+        }
+
+        nome.innerText = nomeUsuario
+
+    </script>
+</body>
+</html>

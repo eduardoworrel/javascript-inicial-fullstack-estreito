@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Oi, sou sua página personalizavel</h1>
+    <b>Cor de fundo</b>
+    <input id="corFundo" type="color">
+    <br>
+    <br>
+    <b>Cor do texto</b>
+    <input id="corFonte" type="color">
+    <br>
+    <br>
+    
+    <b>tamanho da fonte</b>
+    <input id="tamanhoFonte" type="number" min="10" max="150">
+    
+    <br>
+    <br>
+    <button id="salva">Salvar preferencias</button>
+    <script>
+       const corFundo = document.getElementById("corFundo")
+       const corFonte = document.getElementById("corFonte")
+       const tamanhoFonte = document.getElementById("tamanhoFonte")
+       
+       const salva = document.getElementById("salva")
+
+        const preferenciasTxt = localStorage.getItem("preferencias") 
+        if(preferenciasTxt != null){
+            const preferencias = JSON.parse(preferenciasTxt)
+            document.body.style.backgroundColor = preferencias.valorCorFundo;
+            document.body.style.color = preferencias.valorCorFonte;
+            document.body.style.fontSize = preferencias.valorTamanhoFonte + "px";
+        }
+        salva.onclick=function(){
+            const valorCorFundo = corFundo.value
+            const valorCorFonte = corFonte.value
+            const valorTamanhoFonte = tamanhoFonte.value
+
+            document.body.style.backgroundColor = valorCorFundo;
+            document.body.style.color = valorCorFonte;
+            document.body.style.fontSize = valorTamanhoFonte + "px";
+
+            const obj = {
+                valorCorFundo:valorCorFundo,
+                valorCorFonte:valorCorFonte,
+                valorTamanhoFonte:valorTamanhoFonte
+            }
+            const strObj = JSON.stringify(obj)
+            localStorage.setItem("preferencias",strObj)
+        }
+
+    </script>
+</body>
+</html>

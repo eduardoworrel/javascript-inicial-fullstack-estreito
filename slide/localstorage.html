@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="digitacao">
+    <button id="salvar">Salvar</button>
+    <div id="textos"></div>
+    <script>
+        const digitacao = document.getElementById("digitacao");
+        const textos = document.getElementById("textos");
+        const btnSalvar = document.getElementById("salvar");
+
+        let dadosTxt = localStorage.getItem("dados");
+        if(dadosTxt == null){
+            dados = {textos:[]}
+        }
+        else{
+            dados = JSON.parse(dadosTxt) //transforma em objeto
+        }
+        for(let item of dados.textos){
+            textos.innerHTML += item + "<br>"
+        }
+
+        btnSalvar.onclick = function(){
+            const valorDigitado = digitacao.value;
+            dados.textos.push(valorDigitado);
+            localStorage.setItem("dados", JSON.stringify(dados)) //transforma em string
+            textos.innerHTML += valorDigitado + "<br>"
+        }
+    </script>
+</body>
+</html>
