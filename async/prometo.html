@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        
+
+
+
+        const PedidoParaPedrinhoIrNoComercio = new Promise((resolve,rejected) =>{
+            setTimeout(() => {
+                // tempo de deslocalemto até o comercio
+                if(true){
+                    resolve("boa");
+                }else{
+                    rejected(new Error(";/ mals"))
+                }
+            }, 1000);
+        });
+
+        PedidoParaPedrinhoIrNoComercio
+        .then(resposta => {
+          
+          document.body.innerText = "Erro ;/";
+          document.body.style.color = "white";
+          document.body.style.background = "yellowgreen";
+          document.body.style.fontSize = "45px";
+        })
+        .catch(resposta =>{
+            document.body.innerText = "Erro ;/";
+            document.body.style.color = "white";
+            document.body.style.background = "firebrick";
+            document.body.style.fontSize = "45px";
+        })
+
+        alert("sou o segundo alert na ordem de cima para baixo")
+    </script>
+</body>
+</html>
