@@ -7,17 +7,21 @@
     <title>Document</title>
 </head>
 <body>
-    <img id="img" src="">
     <script>
-        const img = document.getElementById("img");
-        
-        fetch("https://dog.ceo/api/breeds/image/random")
-        .then(e => {
-            return e.json();
-        })
-        .then(data =>{
-            img.src = data.message
-        })
+        const qtd = 10;
+        for(let i =0; i < qtd; i++){
+
+            fetch("https://dog.ceo/api/breeds/image/random")
+            .then(e => {
+                return e.json();
+            })
+            .then(data =>{
+                const img = document.createElement("img")
+                img.src = data.message
+                img.style.width = "200px";
+                document.body.append(img)
+            })
+        }
     </script>
 </body>
 </html>
