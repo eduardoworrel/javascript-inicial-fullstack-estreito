@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <b>Busque por nome</b>
+    <input type="search" id="buscaPorNome">
+    <div class="conteudo"></div>
+    <script>
+        let elementos;
+            
+        const conteudo = document.querySelector(".conteudo")
+        const buscaPorNome = document.querySelector("#buscaPorNome")
+
+        //cada tecla digitada pelo usuario dispara uma busca na lista de h1s,
+        // tornando invisivel aqueles que não tem correspondencia ao que foi escrito
+
+        buscaPorNome.onkeyup = () =>{
+            for(let elemento of elementos){
+                elemento.style.display = "block"
+            }
+            const textoAtual = buscaPorNome.value
+            //filtrar os que não devem aparecer
+            const elementosParaTornarInvisivel = Array.from(elementos)
+                .filter((elemento)=> {
+                    console.log(elemento)
+                    return !elemento.id.toUpperCase().includes(textoAtual.toUpperCase()) 
+                })
+
+            for(let elemento of elementosParaTornarInvisivel){
+                elemento.style.display = "none"
+            }
+        }
+
+        function startApp(){
+            let listaDeHtmlEmString = []
+            fetch("https://servicodados.ibge.gov.br/api/v1/censos/nomes/ranking?qtd=1000")
+            .then(qwrty => qwrty.json())
+            .then(data => {
+                
+                const htmlFinal = data.reduce((acumulado, elemento) => {
+                return acumulado + `
+                            <h1 id="${elemento.nome}" class="filtravel">${elemento.rank}º ${elemento.nome}</h1>
+                        `
+                },"");
+
+                conteudo.innerHTML += htmlFinal
+                elementos = document.getElementsByClassName("filtravel")
+            })
+        }
+        startApp()
+    </script>
+</body>
+</html>
